@@ -289,7 +289,7 @@ footer{text-align:center;font-size:13px;color:#8a7560;padding:24px 0 8px}
 var seen = {}, chs = [].slice.call(document.querySelectorAll('.chap')), tm = null;
 function checkChap(){ tm = null; var line = window.innerHeight * 0.4;
   chs.forEach(function(s){ var r = s.getBoundingClientRect(), c = s.dataset.chap;
-    if(r.top < line && r.bottom > line && !seen[c]){ seen[c]=1; gtag('event','read_chapter',{chapter:c, source:SRC, event_name_jp:'erabikata_book'}); }
+    if(r.top < line && r.bottom > line && !seen[c]){ seen[c]=1; var n=('0'+(chs.indexOf(s)+1)).slice(-2); gtag('event','read_chapter',{chapter:c, source:SRC, event_name_jp:'erabikata_ch'+n}); }
   });}
 window.addEventListener('scroll', function(){ if(!tm) tm = setTimeout(checkChap, 250); }, {passive:true});
 setTimeout(checkChap, 1000);
