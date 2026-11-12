@@ -285,11 +285,11 @@ footer{text-align:center;font-size:13px;color:#8a7560;padding:24px 0 8px}
 <footer>小林聖心女子学院小学校<br>このページは、LINEにご登録いただいた方にお届けしています。</footer>
 </main>
 <script>
-// どの章まで読んだかを数える（章ごとに1回）
+// どの章まで読んだかを数える（章ごとに1回。章の頭が画面の上4割に入ったら。長い章でも必ず数える）
 var seen = {};
 var io = new IntersectionObserver(function(es){es.forEach(function(e){
   if(e.isIntersecting){var c=e.target.dataset.chap; if(!seen[c]){seen[c]=1; gtag('event','read_chapter',{chapter:c, source:SRC});}}
-});},{threshold:0.4});
+});},{rootMargin:'0px 0px -60% 0px', threshold:0});
 document.querySelectorAll('.chap').forEach(function(s){io.observe(s);});
 document.querySelectorAll('a[data-link]').forEach(function(a){a.addEventListener('click',function(){
   gtag('event','click_link',{link:a.dataset.link, source:SRC, event_name_jp:'erabikata_book'});
