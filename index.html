@@ -36,6 +36,7 @@ h1{font-family:"Zen Maru Gothic",sans-serif;font-size:34px;line-height:1.35;marg
 .kanshu{margin:0;font-size:13px;color:#7a6a58}
 .toc{background:#fff;border:2px solid var(--line);border-radius:16px;padding:16px 18px;margin:24px 0}
 .toc h2{font-family:"Zen Maru Gothic",sans-serif;font-size:20px;margin:0 0 8px;color:var(--navy)}
+.toc-note{margin:0 0 8px;font-size:14px;color:#5a6472}
 .toc ol{list-style:none;padding:0;margin:0}
 .toc li{border-top:1px dashed var(--line)}
 .toc li:first-child{border-top:0}
@@ -77,7 +78,7 @@ footer{text-align:center;font-size:13px;color:#8a7560;padding:24px 0 8px}
   <p class="sub">説明会や見学の前に読む、学校選びの手引き</p><p class="kanshu">監修：小林聖心女子学院小学校 広報支援員</p></div>
 </header>
 <main class="wrap">
-<nav class="toc" id="toc"><h2>もくじ</h2><ol><li><a href="#sec-1"><span class="tn"></span>この本の使い方</a></li><li><a href="#sec-2"><span class="tn">はじめに</span>いちばん大切なこと</a></li><li><a href="#sec-3"><span class="tn">1</span>笑顔で通えるか</a></li><li><a href="#sec-4"><span class="tn">2</span>通学の時間と安全</a></li><li><a href="#sec-5"><span class="tn">3</span>学びの中身を知る</a></li><li><a href="#sec-6"><span class="tn">4</span>進路の見方</a></li><li><a href="#sec-7"><span class="tn">5</span>保護者の出番</a></li><li><a href="#sec-8"><span class="tn">6</span>お金の見方</a></li><li><a href="#sec-9"><span class="tn">7</span>入試の見方</a></li><li><a href="#sec-10"><span class="tn">8</span>説明会・見学で見るところ</a></li><li><a href="#sec-11"><span class="tn">9</span>情報の集め方</a></li><li><a href="#sec-12"><span class="tn">付録1</span>学校見学チェックシート</a></li><li><a href="#sec-13"><span class="tn">付録2</span>わが家の話し合いシート</a></li><li><a href="#sec-14"><span class="tn">おわりに</span>ここまで読んでくださった方へ</a></li></ol></nav>
+<nav class="toc" id="toc"><h2>もくじ</h2><p class="toc-note">10分ほどで読めます。気になる章からどうぞ。</p><ol><li><a href="#sec-1"><span class="tn"></span>この本の使い方</a></li><li><a href="#sec-2"><span class="tn">はじめに</span>いちばん大切なこと</a></li><li><a href="#sec-3"><span class="tn">1</span>笑顔で通えるか</a></li><li><a href="#sec-4"><span class="tn">2</span>通学の時間と安全</a></li><li><a href="#sec-5"><span class="tn">3</span>学びの中身を知る</a></li><li><a href="#sec-6"><span class="tn">4</span>進路の見方</a></li><li><a href="#sec-7"><span class="tn">5</span>保護者の出番</a></li><li><a href="#sec-8"><span class="tn">6</span>お金の見方</a></li><li><a href="#sec-9"><span class="tn">7</span>入試の見方</a></li><li><a href="#sec-10"><span class="tn">8</span>説明会・見学で見るところ</a></li><li><a href="#sec-11"><span class="tn">9</span>情報の集め方</a></li><li><a href="#sec-12"><span class="tn">付録1</span>学校見学チェックシート</a></li><li><a href="#sec-13"><span class="tn">付録2</span>わが家の話し合いシート</a></li><li><a href="#sec-14"><span class="tn">おわりに</span>ここまで読んでくださった方へ</a></li></ol></nav>
 <section class="chap" id="sec-1" data-chap="この本の使い方">
 <div class="chap-head"><h2>この本の使い方</h2></div>
 <img class="ill" src="img/00_tsukaikata.jpg" alt="" loading="lazy">
@@ -253,6 +254,8 @@ footer{text-align:center;font-size:13px;color:#8a7560;padding:24px 0 8px}
 <div class="box talk"><p class="box-t"><span>🏠</span>わが家で話し合ってみましょう</p>
 <ul><li>見学した学校で、いちばん印象に残った子供の姿は何か</li></ul>
 </div>
+<p>小林聖心女子学院小学校の学校説明会や授業見学ツアーの日程は、こちらでご覧いただけます。</p>
+<p><a class="btn" href="https://www.oby-sacred-heart.ed.jp/setsumei_cat/setsumei_s/?utm_source=digitalbook&utm_medium=book&utm_campaign=erabikata" target="_blank" rel="noopener" data-link="setsumei_s">学校説明会・公開行事のページを見る</a></p>
 <p class="totop"><a href="#toc">目次へもどる</a></p></section>
 <section class="chap" id="sec-11" data-chap="9　情報の集め方">
 <div class="chap-head"><span class="num">9</span><h2>情報の集め方</h2></div>
@@ -294,7 +297,8 @@ function checkChap(){ tm = null; var line = window.innerHeight * 0.4;
 window.addEventListener('scroll', function(){ if(!tm) tm = setTimeout(checkChap, 250); }, {passive:true});
 setTimeout(checkChap, 1000);
 document.querySelectorAll('a[data-link]').forEach(function(a){a.addEventListener('click',function(){
-  gtag('event','click_link',{link:a.dataset.link, source:SRC, event_name_jp:'erabikata_book'});
+  var cs=a.closest('.chap'), n=cs?('0'+(chs.indexOf(cs)+1)).slice(-2):'00';
+  gtag('event','click_link',{link:a.dataset.link, source:SRC, event_name_jp:'erabikata_link_ch'+n});
 });});
 // チェックシートのチェックをこの端末に覚えておく
 try{
